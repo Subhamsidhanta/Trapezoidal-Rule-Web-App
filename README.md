@@ -9,9 +9,10 @@ Supports:
 
 ---
 
-## 🔗 Live Preview
+## 🌐 Live Demo
 
-*(If hosted, add the link here)*
+[![Visit Website](https://img.shields.io/badge/Visit-WebApp-blue?style=for-the-badge)](https://trapezoidal-rule-web-app-subhamsidhanta.onrender.com)
+
 
 ---
 
