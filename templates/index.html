@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Trapezoidal Rule Calculator</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Trapezoidal Rule Calculator</h1>
+
+        <form method="POST" action="/">
+            <label>Select Input Type:</label>
+            <div class="radio-group">
+                <input type="radio" name="type" value="type1" checked> Type 1 (Table Input)
+                <input type="radio" name="type" value="type2"> Type 2 (Function Input)
+            </div>
+
+            <div id="type1-fields">
+                <label>Enter X values (comma-separated):</label>
+                <input type="text" name="x_vals">
+
+                <label>Enter Y values (comma-separated):</label>
+                <input type="text" name="y_vals">
+            </div>
+
+            <div id="type2-fields" style="display: none;">
+                <label>Function of x (use 'x' only, e.g., x*x + 3):</label>
+                <input type="text" name="function">
+
+                <label>Lower limit (a):</label>
+                <input type="number" step="any" name="a">
+
+                <label>Upper limit (b):</label>
+                <input type="number" step="any" name="b">
+
+                <label>Number of intervals (n):</label>
+                <input type="number" name="n">
+            </div>
+
+            <input type="submit" value="Calculate" class="btn-submit">
+        </form>
+
+        {% if result %}
+        <div class="result">
+            Result: {{ result }}
+        </div>
+        {% endif %}
+    </div>
+
+    <script>
+        const type1Fields = document.getElementById("type1-fields");
+        const type2Fields = document.getElementById("type2-fields");
+        const radios = document.querySelectorAll('input[name="type"]');
+
+        radios.forEach(radio => {
+            radio.addEventListener('change', () => {
+                if (radio.value === "type1") {
+                    type1Fields.style.display = "block";
+                    type2Fields.style.display = "none";
+                } else {
+                    type1Fields.style.display = "none";
+                    type2Fields.style.display = "block";
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
